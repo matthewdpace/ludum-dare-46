@@ -5,6 +5,10 @@ extends Spatial
 # var a = 2
 # var b = "text"
 
+var hunger 
+var biomass
+var edible
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

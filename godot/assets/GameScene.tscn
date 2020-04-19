@@ -1,13 +1,18 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/GameScene.gd" type="Script" id=1]
 [ext_resource path="res://assets/materials/MarsSurface.tres" type="Material" id=2]
-[ext_resource path="res://assets/UL_HUD_Quad.gd" type="Script" id=4]
-[ext_resource path="res://assets/UI_UL_Mesh.tres" type="QuadMesh" id=5]
+[ext_resource path="res://assets/materials/water_shader.tres" type="Material" id=3]
+[ext_resource path="res://assets/Vegetable.gd" type="Script" id=4]
+[ext_resource path="res://assets/Animal.gd" type="Script" id=5]
 [ext_resource path="res://assets/materials/Support_Material.tres" type="Material" id=6]
 [ext_resource path="res://assets/materials/BaseFloor.tres" type="Material" id=7]
 [ext_resource path="res://assets/materials/Dirt.tres" type="Material" id=8]
 [ext_resource path="res://assets/CameraParent.gd" type="Script" id=9]
+[ext_resource path="res://assets/Aquarium.gd" type="Script" id=10]
+[ext_resource path="res://assets/misc/Fish.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/scenes/GUI Blocks.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/HUD1.gd" type="Script" id=13]
 
 [sub_resource type="PlaneMesh" id=1]
 material = ExtResource( 2 )
@@ -17,6 +22,7 @@ size = Vector2( 500, 500 )
 size = Vector3( 0.5, 65, 0.5 )
 
 [sub_resource type="CubeMesh" id=4]
+material = ExtResource( 3 )
 size = Vector3( 19.5, 12, 19.5 )
 
 [sub_resource type="CubeMesh" id=5]
@@ -31,8 +37,20 @@ size = Vector3( 19.5, 0.5, 19.5 )
 [sub_resource type="CubeMesh" id=8]
 size = Vector3( 19.5, 3, 19.5 )
 
-[sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.495, 0.5, 0.2 )
+[sub_resource type="CubeMesh" id=12]
+size = Vector3( 20, 2, 20 )
+
+[sub_resource type="ProceduralSky" id=11]
+resource_local_to_scene = true
+sky_horizon_color = Color( 0.94902, 0.596078, 0.85098, 1 )
+sky_curve = 0.428115
+sky_energy = 0.4
+sun_latitude = -11.59
+
+[sub_resource type="Environment" id=10]
+background_mode = 3
+background_sky = SubResource( 11 )
+background_color = Color( 0.439216, 0.658824, 0.733333, 1 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 1 )
@@ -66,19 +84,27 @@ mesh = SubResource( 3 )
 material/0 = ExtResource( 6 )
 
 [node name="Aquarium" type="Spatial" parent="Base"]
+script = ExtResource( 10 )
+
+[node name="Fish2" parent="Base/Aquarium" instance=ExtResource( 11 )]
+transform = Transform( 0.415821, 0, -0.909447, 0, 1, 0, 0.909447, 0, 0.415821, -10.7315, 10.6645, -1.27588 )
 
 [node name="Water" type="MeshInstance" parent="Base/Aquarium"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
 mesh = SubResource( 4 )
-material/0 = null
+material/0 = ExtResource( 3 )
 
 [node name="AquariumLight" type="SpotLight" parent="Base/Aquarium"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 19.5, 0 )
 light_color = Color( 0.929412, 0.960784, 1, 1 )
 light_energy = 0.3
 
+[node name="Fish1" parent="Base/Aquarium" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.84729, 5.34111, 2.73261 )
+
 [node name="Vegetable" type="Spatial" parent="Base"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
+script = ExtResource( 4 )
 
 [node name="Floor" type="MeshInstance" parent="Base/Vegetable"]
 mesh = SubResource( 5 )
@@ -96,6 +122,7 @@ light_energy = 0.3
 
 [node name="Animal" type="Spatial" parent="Base"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0 )
+script = ExtResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Base/Animal"]
 mesh = SubResource( 7 )
@@ -111,7 +138,22 @@ transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 19.5
 light_color = Color( 0.988235, 0.984314, 0.764706, 1 )
 light_energy = 0.3
 
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
+[node name="Roof" type="Spatial" parent="Base"]
+
+[node name="MeshInstance" type="MeshInstance" parent="Base/Roof"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 63, 0 )
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="CameraParent" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+script = ExtResource( 9 )
+
+[node name="Camera" type="Camera" parent="CameraParent"]
+transform = Transform( 1, 0, 0, 0, 0.984646, 0.174559, 0, -0.174559, 0.984646, 0, 22, 43.7699 )
+environment = SubResource( 10 )
+
+[node name="ViewportContainer" type="ViewportContainer" parent="CameraParent"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 stretch = true
@@ -119,96 +161,12 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="CameraParent" type="Spatial" parent="ViewportContainer"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-script = ExtResource( 9 )
-
-[node name="HUD" type="Viewport" parent="ViewportContainer/CameraParent"]
-size = Vector2( 200, 200 )
-render_target_v_flip = true
+[node name="HUD1" type="Viewport" parent="CameraParent/ViewportContainer"]
+size = Vector2( 600, 1024 )
+transparent_bg = true
+handle_input_locally = false
+hdr = false
 render_target_update_mode = 3
+script = ExtResource( 13 )
 
-[node name="GUI Blocks" type="Node2D" parent="ViewportContainer/CameraParent/HUD"]
-__meta__ = {
-"_edit_vertical_guides_": [ 82.7213 ]
-}
-
-[node name="Upper Left" type="Control" parent="ViewportContainer/CameraParent/HUD/GUI Blocks"]
-margin_right = 512.0
-margin_bottom = 512.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextDescription" type="Label" parent="ViewportContainer/CameraParent/HUD/GUI Blocks/Upper Left"]
-margin_left = 0.565346
-margin_top = 1.08446
-margin_right = 84.5653
-margin_bottom = 15.0845
-text = "Tower Totals:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="total_O2" type="Label" parent="ViewportContainer/CameraParent/HUD/GUI Blocks/Upper Left"]
-margin_left = 26.6712
-margin_top = 17.4648
-margin_right = 84.6712
-margin_bottom = 31.4648
-text = "Total O2:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="_total_O2" type="Label" parent="ViewportContainer/CameraParent/HUD/GUI Blocks/Upper Left"]
-margin_left = 90.3868
-margin_top = 18.4825
-margin_right = 130.387
-margin_bottom = 32.4825
-
-[node name="total_CO2" type="Label" parent="ViewportContainer/CameraParent/HUD/GUI Blocks/Upper Left"]
-margin_left = 19.4952
-margin_top = 31.6481
-margin_right = 85.4952
-margin_bottom = 45.6481
-text = "Total CO2:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="_total_CO2" type="Label" parent="ViewportContainer/CameraParent/HUD/GUI Blocks/Upper Left"]
-margin_left = 92.4123
-margin_top = 30.3821
-margin_right = 132.412
-margin_bottom = 44.3821
-
-[node name="total H2O" type="Label" parent="ViewportContainer/CameraParent/HUD/GUI Blocks/Upper Left"]
-margin_left = 16.9634
-margin_top = 45.8264
-margin_right = 84.9634
-margin_bottom = 59.8264
-text = "Total H2O:"
-
-[node name="_total H2O" type="Label" parent="ViewportContainer/CameraParent/HUD/GUI Blocks/Upper Left"]
-margin_left = 90.64
-margin_top = 45.0668
-margin_right = 130.64
-margin_bottom = 59.0668
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Camera" type="Camera" parent="ViewportContainer/CameraParent"]
-transform = Transform( 1, 0, 0, 0, 0.93124, 0.364405, 0, -0.364405, 0.93124, 0, 22.0243, 37.5993 )
-
-[node name="MeshInstance" type="MeshInstance" parent="ViewportContainer/CameraParent"]
-transform = Transform( 1, 0, 0, 0, 0.930782, 0.365575, 0, -0.365575, 0.930782, -2.28605, 22.716, 32.4973 )
-mesh = ExtResource( 5 )
-skeleton = NodePath("")
-material/0 = null
-script = ExtResource( 4 )
-
-[node name="Area" type="Area" parent="ViewportContainer/CameraParent/MeshInstance"]
-
-[node name="CollisionShape" type="CollisionShape" parent="ViewportContainer/CameraParent/MeshInstance/Area"]
-shape = SubResource( 2 )
+[node name="GUI Blocks" parent="CameraParent/ViewportContainer/HUD1" instance=ExtResource( 12 )]

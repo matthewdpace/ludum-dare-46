@@ -1,71 +1,105 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/misc/HUD_Font.tres" type="DynamicFont" id=1]
 
 [node name="GUI Blocks" type="Node2D"]
 __meta__ = {
-"_edit_vertical_guides_": [ 82.7213 ]
+"_edit_vertical_guides_": [ 307.5 ]
 }
 
 [node name="Upper Left" type="Control" parent="."]
-margin_right = 512.0
-margin_bottom = 512.0
+margin_right = 600.0
+margin_bottom = 1024.0
+rect_min_size = Vector2( 600, 1024 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextDescription" type="Label" parent="Upper Left"]
-margin_left = 0.565346
-margin_top = 1.08446
-margin_right = 84.5653
-margin_bottom = 15.0845
+[node name="TowerTotals" type="Label" parent="Upper Left"]
+margin_left = 24.0
+margin_top = 40.0
+margin_right = 226.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 1 )
 text = "Tower Totals:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="total_O2" type="Label" parent="Upper Left"]
-margin_left = 26.6712
-margin_top = 17.4648
-margin_right = 84.6712
-margin_bottom = 31.4648
+margin_left = 96.0
+margin_top = 72.0
+margin_right = 223.0
+margin_bottom = 98.0
+custom_fonts/font = ExtResource( 1 )
 text = "Total O2:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="_total_O2" type="Label" parent="Upper Left"]
-margin_left = 90.3868
-margin_top = 18.4825
-margin_right = 130.387
-margin_bottom = 32.4825
+margin_left = 248.0
+margin_top = 72.0
+margin_right = 424.0
+margin_bottom = 98.0
+custom_fonts/font = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="total_CO2" type="Label" parent="Upper Left"]
-margin_left = 19.4952
-margin_top = 31.6481
-margin_right = 85.4952
-margin_bottom = 45.6481
+margin_left = 80.0
+margin_top = 104.0
+margin_right = 225.0
+margin_bottom = 130.0
+custom_fonts/font = ExtResource( 1 )
 text = "Total CO2:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="_total_CO2" type="Label" parent="Upper Left"]
-margin_left = 92.4123
-margin_top = 30.3821
-margin_right = 132.412
-margin_bottom = 44.3821
+margin_left = 248.0
+margin_top = 104.0
+margin_right = 408.0
+margin_bottom = 130.0
+custom_fonts/font = ExtResource( 1 )
 
 [node name="total H2O" type="Label" parent="Upper Left"]
-margin_left = 16.9634
-margin_top = 45.8264
-margin_right = 84.9634
-margin_bottom = 59.8264
+margin_left = 80.0
+margin_top = 136.0
+margin_right = 224.0
+margin_bottom = 162.0
+custom_fonts/font = ExtResource( 1 )
 text = "Total H2O:"
 
 [node name="_total H2O" type="Label" parent="Upper Left"]
-margin_left = 90.64
-margin_top = 45.0668
-margin_right = 130.64
-margin_bottom = 59.0668
+margin_left = 248.0
+margin_top = 136.0
+margin_right = 384.0
+margin_bottom = 162.0
+custom_fonts/font = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="day" type="Label" parent="Upper Left"]
+margin_left = 360.0
+margin_top = 40.0
+margin_right = 432.0
+margin_bottom = 66.0
+custom_fonts/font = ExtResource( 1 )
+text = "Day:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="_day" type="Label" parent="Upper Left"]
+margin_left = 440.0
+margin_top = 40.0
+margin_right = 536.0
+margin_bottom = 66.0
+custom_fonts/font = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
