@@ -2,7 +2,7 @@
 
 [sub_resource type="ViewportTexture" id=1]
 flags = 64
-viewport_path = NodePath("CameraParent/HUD")
+viewport_path = NodePath("ViewportContainer/CameraParent/HUD")
 
 [sub_resource type="SpatialMaterial" id=2]
 resource_local_to_scene = true
