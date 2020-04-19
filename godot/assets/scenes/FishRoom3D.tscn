@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/scenes/BaseRoom3D.gd" type="Script" id=1]
+[ext_resource path="res://assets/materials/BaseFloor.tres" type="Material" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+albedo_color = Color( 0.831373, 0.847059, 0.85098, 1 )
+transmission_enabled = true
+transmission = Color( 0.733333, 0.733333, 0.733333, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+size = Vector3( 10, 3, 10 )
+
+[sub_resource type="PlaneMesh" id=3]
+material = ExtResource( 2 )
+size = Vector2( 10, 10 )
+
+[node name="Base" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Aquarium" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Building" type="Spatial" parent="."]
+script = ExtResource( 1 )
+
+[node name="Floor" type="MeshInstance" parent="Building"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="MeshInstance" type="MeshInstance" parent="Building"]
+
+[node name="Structure" type="CSGCombiner" parent="Building"]
+material_override = ExtResource( 2 )
+
+[node name="Corner" type="CSGBox" parent="Building/Structure"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, 5 )
+width = 0.05
+height = 5.0
+depth = 0.05
+
+[node name="Corner2" type="CSGBox" parent="Building/Structure"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, 5 )
+width = 0.05
+height = 5.0
+depth = 0.05
+
+[node name="Corner3" type="CSGBox" parent="Building/Structure"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, -5 )
+width = 0.05
+height = 5.0
+depth = 0.05
+
+[node name="Corner4" type="CSGBox" parent="Building/Structure"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, -5 )
+width = 0.05
+height = 5.0
+depth = 0.05
+
+[node name="SpotLight" type="SpotLight" parent="Building"]
+transform = Transform( 1, 0, 0, 0, 2.98023e-08, 1, 0, -1, 2.98023e-08, -3, 4, 3 )
+spot_angle = 30.0
+
+[node name="SpotLight2" type="SpotLight" parent="Building"]
+transform = Transform( 1, 0, 0, 0, 2.98023e-08, 1, 0, -1, 2.98023e-08, 3, 4, 3 )
+spot_angle = 30.0
+
+[node name="SpotLight3" type="SpotLight" parent="Building"]
+transform = Transform( 1, 0, 0, 0, 2.98023e-08, 1, 0, -1, 2.98023e-08, 3, 4, -3 )
+spot_angle = 30.0
+
+[node name="SpotLight4" type="SpotLight" parent="Building"]
+transform = Transform( 1, 0, 0, 0, 2.98023e-08, 1, 0, -1, 2.98023e-08, -3, 4, -3 )
+spot_angle = 30.0

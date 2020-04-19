@@ -1,0 +1,71 @@
+[gd_scene format=2]
+
+[node name="GUI Blocks" type="Node2D"]
+__meta__ = {
+"_edit_vertical_guides_": [ 82.7213 ]
+}
+
+[node name="Upper Left" type="Control" parent="."]
+margin_right = 512.0
+margin_bottom = 512.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextDescription" type="Label" parent="Upper Left"]
+margin_left = 0.565346
+margin_top = 1.08446
+margin_right = 84.5653
+margin_bottom = 15.0845
+text = "Tower Totals:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="total_O2" type="Label" parent="Upper Left"]
+margin_left = 26.6712
+margin_top = 17.4648
+margin_right = 84.6712
+margin_bottom = 31.4648
+text = "Total O2:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="_total_O2" type="Label" parent="Upper Left"]
+margin_left = 90.3868
+margin_top = 18.4825
+margin_right = 130.387
+margin_bottom = 32.4825
+
+[node name="total_CO2" type="Label" parent="Upper Left"]
+margin_left = 19.4952
+margin_top = 31.6481
+margin_right = 85.4952
+margin_bottom = 45.6481
+text = "Total CO2:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="_total_CO2" type="Label" parent="Upper Left"]
+margin_left = 92.4123
+margin_top = 30.3821
+margin_right = 132.412
+margin_bottom = 44.3821
+
+[node name="total H2O" type="Label" parent="Upper Left"]
+margin_left = 16.9634
+margin_top = 45.8264
+margin_right = 84.9634
+margin_bottom = 59.8264
+text = "Total H2O:"
+
+[node name="_total H2O" type="Label" parent="Upper Left"]
+margin_left = 90.64
+margin_top = 45.0668
+margin_right = 130.64
+margin_bottom = 59.0668
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,13 @@
+[gd_scene format=2]
+
+[node name="Cow" type="Spatial"]
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+
+[node name="Body" type="CSGSphere" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 0.481689, 0, 0, 0, 0.585938, 0, 0.734375, 0 )
+
+[node name="Head" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.978241, 0.805906, 0 )
+radius = 0.15
+height = 0.4

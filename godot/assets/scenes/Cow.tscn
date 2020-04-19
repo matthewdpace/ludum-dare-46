@@ -1,0 +1,44 @@
+[gd_scene format=2]
+
+[node name="Cow" type="Spatial"]
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+snap = 0.01
+
+[node name="Body" type="CSGSphere" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 0.481689, 0, 0, 0, 0.585938, 0, 0.734375, 0 )
+
+[node name="Head" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25951, 0.805906, 0 )
+radius = 0.15
+height = 0.4
+
+[node name="Udders" type="CSGSphere" parent="CSGCombiner"]
+transform = Transform( 0.215717, 0, 0, 0, 0.194312, 0, 0, 0, 0.254181, -0.449479, 0.319497, 0 )
+radius = 0.604342
+
+[node name="Neck" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 2.6085, 0, 0, 0, 1.00716, 0, 0, 0, -0.594585, 1.0794, 0.824684, 0 )
+width = 0.2
+height = 0.2
+depth = 0.2
+
+[node name="Leg" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.713629, 0.229381, -0.337447 )
+radius = 0.02
+height = 0.45
+
+[node name="Leg4" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535221, 0.229381, -0.337447 )
+radius = 0.02
+height = 0.45
+
+[node name="Leg2" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.709988, 0.229381, 0.321567 )
+radius = 0.02
+height = 0.45
+
+[node name="Leg3" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535222, 0.229381, 0.321567 )
+radius = 0.02
+height = 0.45

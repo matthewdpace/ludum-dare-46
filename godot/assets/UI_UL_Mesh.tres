@@ -1,0 +1,14 @@
+[gd_resource type="QuadMesh" load_steps=3 format=2]
+
+[sub_resource type="ViewportTexture" id=1]
+flags = 64
+viewport_path = NodePath("CameraParent/HUD")
+
+[sub_resource type="SpatialMaterial" id=2]
+resource_local_to_scene = true
+flags_transparent = true
+albedo_texture = SubResource( 1 )
+
+[resource]
+resource_local_to_scene = true
+material = SubResource( 2 )
