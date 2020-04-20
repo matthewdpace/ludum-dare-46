@@ -9,8 +9,8 @@ __meta__ = {
 
 [node name="Upper Left" type="Control" parent="."]
 margin_right = 600.0
-margin_bottom = 1024.0
-rect_min_size = Vector2( 600, 1024 )
+margin_bottom = 200.0
+rect_min_size = Vector2( 600, 200 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -27,9 +27,9 @@ __meta__ = {
 }
 
 [node name="total_O2" type="Label" parent="Upper Left"]
-margin_left = 96.0
+margin_left = 99.2195
 margin_top = 72.0
-margin_right = 223.0
+margin_right = 226.219
 margin_bottom = 98.0
 custom_fonts/font = ExtResource( 1 )
 text = "Total O2:"
@@ -64,6 +64,9 @@ margin_top = 104.0
 margin_right = 408.0
 margin_bottom = 130.0
 custom_fonts/font = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="total H2O" type="Label" parent="Upper Left"]
 margin_left = 80.0
@@ -83,22 +86,65 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="meals" type="Label" parent="Upper Left"]
+margin_left = 354.576
+margin_top = 40.7221
+margin_right = 554.576
+margin_bottom = 66.7221
+custom_fonts/font = ExtResource( 1 )
+text = "Meals Served:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="_meals" type="Label" parent="Upper Left"]
+margin_left = 357.576
+margin_top = 69.3316
+margin_right = 557.576
+margin_bottom = 95.3316
+custom_fonts/font = ExtResource( 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="day" type="Label" parent="Upper Left"]
-margin_left = 360.0
-margin_top = 40.0
-margin_right = 432.0
-margin_bottom = 66.0
+margin_left = 357.151
+margin_top = 101.893
+margin_right = 429.151
+margin_bottom = 127.893
 custom_fonts/font = ExtResource( 1 )
 text = "Day:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="year" type="Label" parent="Upper Left"]
+margin_left = 343.083
+margin_top = 133.249
+margin_right = 419.083
+margin_bottom = 159.249
+custom_fonts/font = ExtResource( 1 )
+text = "Year:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="_day" type="Label" parent="Upper Left"]
-margin_left = 440.0
-margin_top = 40.0
-margin_right = 536.0
-margin_bottom = 66.0
+margin_left = 445.151
+margin_top = 101.893
+margin_right = 541.151
+margin_bottom = 127.893
+custom_fonts/font = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="_year" type="Label" parent="Upper Left"]
+margin_left = 443.863
+margin_top = 133.444
+margin_right = 539.863
+margin_bottom = 159.444
 custom_fonts/font = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

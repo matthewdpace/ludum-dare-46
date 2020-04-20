@@ -8,6 +8,7 @@ extends Spatial
 var hunger 
 var biomass
 var edible
+var age
 
 
 # Called when the node enters the scene tree for the first time.

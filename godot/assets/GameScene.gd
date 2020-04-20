@@ -14,7 +14,14 @@ var preparedVeggie
 var preparedMeat
 var preparedFish
 var daysPassed
+var day = 0
+var year = 0
 # Called when the node enters the scene tree for the first time.
+var biome = {
+	
+}
+
+
 func _ready():
 	mealsFed = 0
 	preparedFish = 0
@@ -32,10 +39,28 @@ func updateGUI():
 	ulpath.text = str(self.totalO2_kg)
 	ulpath = $"CameraParent/ViewportContainer/HUD1/GUI Blocks/Upper Left/_total_CO2" 
 	ulpath.text = str(self.totalCO2_kg)
+	
+	
+	
+	ulpath = $"CameraParent/ViewportContainer/HUD1/GUI Blocks/Upper Left/_meals"
+	ulpath.text = str(mealsFed)
+	ulpath = $"CameraParent/ViewportContainer/HUD1/GUI Blocks/Upper Left/_year"
+	ulpath.text = str(year)
 	ulpath = $"CameraParent/ViewportContainer/HUD1/GUI Blocks/Upper Left/_day" 
-	ulpath.text = str(daysPassed)
+	ulpath.text = str(int(day))
+	
 	
 
 func _process(delta):
-	daysPassed += 105120 /300 * delta
+	var dp = .5 * delta
+	if int(daysPassed) > int(daysPassed + dp):
+		#$Base/Aquarium.day()
+		#$Base/Vegetable.day()
+		#$Base/Animal.day()
+		pass
+	daysPassed +=dp
 	updateGUI()
+	day = daysPassed
+	if day > 668:
+		day -=668
+		year += 1

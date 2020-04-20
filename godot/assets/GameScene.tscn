@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/GameScene.gd" type="Script" id=1]
 [ext_resource path="res://assets/materials/MarsSurface.tres" type="Material" id=2]
@@ -18,29 +18,35 @@
 material = ExtResource( 2 )
 size = Vector2( 500, 500 )
 
-[sub_resource type="CubeMesh" id=3]
+[sub_resource type="CubeMesh" id=2]
 size = Vector3( 0.5, 65, 0.5 )
 
-[sub_resource type="CubeMesh" id=4]
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 10, 6, 10 )
+
+[sub_resource type="CubeMesh" id=3]
 material = ExtResource( 3 )
 size = Vector3( 19.5, 12, 19.5 )
 
-[sub_resource type="CubeMesh" id=5]
+[sub_resource type="CubeMesh" id=4]
 size = Vector3( 19.5, 0.5, 19.5 )
 
-[sub_resource type="CubeMesh" id=6]
+[sub_resource type="CubeMesh" id=5]
 size = Vector3( 19.5, 4, 19.5 )
 
-[sub_resource type="CubeMesh" id=7]
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 10, 4, 10 )
+
+[sub_resource type="CubeMesh" id=6]
 size = Vector3( 19.5, 0.5, 19.5 )
 
-[sub_resource type="CubeMesh" id=8]
+[sub_resource type="CubeMesh" id=7]
 size = Vector3( 19.5, 3, 19.5 )
 
-[sub_resource type="CubeMesh" id=12]
+[sub_resource type="CubeMesh" id=8]
 size = Vector3( 20, 2, 20 )
 
-[sub_resource type="ProceduralSky" id=11]
+[sub_resource type="ProceduralSky" id=9]
 resource_local_to_scene = true
 sky_horizon_color = Color( 0.94902, 0.596078, 0.85098, 1 )
 sky_curve = 0.428115
@@ -49,7 +55,7 @@ sun_latitude = -11.59
 
 [sub_resource type="Environment" id=10]
 background_mode = 3
-background_sky = SubResource( 11 )
+background_sky = SubResource( 9 )
 background_color = Color( 0.439216, 0.658824, 0.733333, 1 )
 
 [node name="Spatial" type="Spatial"]
@@ -65,39 +71,45 @@ material/0 = null
 
 [node name="Column01" type="MeshInstance" parent="Base"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 32, -9.75 )
-mesh = SubResource( 3 )
+mesh = SubResource( 2 )
 material/0 = ExtResource( 6 )
 
 [node name="Column02" type="MeshInstance" parent="Base"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 32, -9.75 )
-mesh = SubResource( 3 )
+mesh = SubResource( 2 )
 material/0 = ExtResource( 6 )
 
 [node name="Column03" type="MeshInstance" parent="Base"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 32, 9.75 )
-mesh = SubResource( 3 )
+mesh = SubResource( 2 )
 material/0 = ExtResource( 6 )
 
 [node name="Column04" type="MeshInstance" parent="Base"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 32, 9.75 )
-mesh = SubResource( 3 )
+mesh = SubResource( 2 )
 material/0 = ExtResource( 6 )
 
 [node name="Aquarium" type="Spatial" parent="Base"]
 script = ExtResource( 10 )
+
+[node name="AquaClickArea" type="Area" parent="Base/Aquarium"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
+
+[node name="AquaClickBox" type="CollisionShape" parent="Base/Aquarium/AquaClickArea"]
+shape = SubResource( 11 )
 
 [node name="Fish2" parent="Base/Aquarium" instance=ExtResource( 11 )]
 transform = Transform( 0.415821, 0, -0.909447, 0, 1, 0, 0.909447, 0, 0.415821, -10.7315, 10.6645, -1.27588 )
 
 [node name="Water" type="MeshInstance" parent="Base/Aquarium"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 material/0 = ExtResource( 3 )
 
 [node name="AquariumLight" type="SpotLight" parent="Base/Aquarium"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 19.5, 0 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 17.8867, 0 )
 light_color = Color( 0.929412, 0.960784, 1, 1 )
-light_energy = 0.3
+spot_range = 20.0
 
 [node name="Fish1" parent="Base/Aquarium" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.84729, 5.34111, 2.73261 )
@@ -107,30 +119,37 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
 script = ExtResource( 4 )
 
 [node name="Floor" type="MeshInstance" parent="Base/Vegetable"]
-mesh = SubResource( 5 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 7 )
 
 [node name="Dirt" type="MeshInstance" parent="Base/Vegetable"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0 )
-mesh = SubResource( 6 )
+mesh = SubResource( 5 )
 material/0 = ExtResource( 8 )
 
 [node name="Vegetable Light" type="SpotLight" parent="Base/Vegetable"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 19.5, 0 )
-light_color = Color( 0.376471, 0.443137, 0.356863, 1 )
-light_energy = 0.3
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 17.705, 0 )
+light_color = Color( 0.886275, 0.984314, 0.858824, 1 )
+light_energy = 0.5
+spot_range = 20.0
+
+[node name="VegClickArea" type="Area" parent="Base/Vegetable"]
+
+[node name="VegClickBox" type="CollisionShape" parent="Base/Vegetable/VegClickArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+shape = SubResource( 12 )
 
 [node name="Animal" type="Spatial" parent="Base"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0 )
 script = ExtResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Base/Animal"]
-mesh = SubResource( 7 )
+mesh = SubResource( 6 )
 material/0 = ExtResource( 7 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Base/Animal"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0 )
-mesh = SubResource( 8 )
+mesh = SubResource( 7 )
 material/0 = ExtResource( 8 )
 
 [node name="SpotLight" type="SpotLight" parent="Base/Animal"]
@@ -142,11 +161,10 @@ light_energy = 0.3
 
 [node name="MeshInstance" type="MeshInstance" parent="Base/Roof"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 63, 0 )
-mesh = SubResource( 12 )
+mesh = SubResource( 8 )
 material/0 = null
 
 [node name="CameraParent" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 9 )
 
 [node name="Camera" type="Camera" parent="CameraParent"]

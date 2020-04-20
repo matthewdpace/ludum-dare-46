@@ -1,5 +1,6 @@
 extends Button
 
+var current_scene = null
 
 func _ready():
 	var root = get_tree().get_root()
@@ -19,8 +20,6 @@ func goto_scene(path):
 
 
 func _deferred_goto_scene(path):
-	# It is now safe to remove the current scene
-	current_scene.free()
 
 	# Load the new scene.
 	var s = ResourceLoader.load(path)
@@ -33,6 +32,7 @@ func _deferred_goto_scene(path):
 
 	# Optionally, to make it compatible with the SceneTree.change_scene() API.
 	get_tree().set_current_scene(current_scene)
+	current_scene.free()
 	
 
 func _on_PlayButton_button_up():

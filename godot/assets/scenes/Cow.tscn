@@ -19,6 +19,7 @@ radius = 0.604342
 
 [node name="Neck" type="CSGBox" parent="CSGCombiner"]
 transform = Transform( 2.6085, 0, 0, 0, 1.00716, 0, 0, 0, -0.594585, 1.0794, 0.824684, 0 )
+operation = 2
 width = 0.2
 height = 0.2
 depth = 0.2
