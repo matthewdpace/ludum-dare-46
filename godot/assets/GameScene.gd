@@ -53,11 +53,11 @@ func updateGUI():
 
 func _process(delta):
 	var dp = .5 * delta
-	if int(daysPassed) > int(daysPassed + dp):
-		#$Base/Aquarium.day()
+	if int(daysPassed) < int(daysPassed + dp):
+		$Base/Aquarium.day()
 		#$Base/Vegetable.day()
 		#$Base/Animal.day()
-		pass
+		#pass
 	daysPassed +=dp
 	updateGUI()
 	day = daysPassed

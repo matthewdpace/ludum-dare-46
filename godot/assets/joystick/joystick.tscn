@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/joystick/circle_small.tres" type="Texture" id=1]
+[ext_resource path="res://assets/joystick/UI_Junk_128sqmessy.png" type="Texture" id=2]
+[ext_resource path="res://assets/joystick/arrow.tres" type="Texture" id=3]
+[ext_resource path="res://assets/joystick/joystick.gd" type="Script" id=4]
+
+[node name="Control" type="Control"]
+anchor_right = 43.435
+anchor_bottom = 22.484
+margin_right = -25741.0
+margin_bottom = -22703.6
+rect_scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 127.666, -184.851 ],
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="TextureRect" parent="."]
+anchor_right = 29.109
+anchor_bottom = 33.146
+margin_left = 32.0
+margin_top = 24.0
+margin_right = -9026.88
+margin_bottom = -10327.2
+rect_pivot_offset = Vector2( 128, 128 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="c" type="TextureRect" parent="."]
+anchor_right = 0.427
+anchor_bottom = 0.427
+margin_left = 32.0
+margin_top = 24.0
+margin_right = 159.36
+margin_bottom = 151.353
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 128, 128 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="r" type="TextureRect" parent="."]
+anchor_left = 0.11
+anchor_top = 0.028
+anchor_right = 0.155
+anchor_bottom = 0.138
+margin_left = 127.0
+margin_top = 23.6
+margin_right = 369.5
+margin_bottom = 246.6
+rect_scale = Vector2( 0.25, 0.25 )
+rect_pivot_offset = Vector2( 128, 128 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="d" type="TextureRect" parent="."]
+margin_left = 32.0
+margin_top = 160.0
+margin_right = 288.0
+margin_bottom = 416.0
+rect_rotation = 90.0
+rect_scale = Vector2( 0.25, 0.25 )
+rect_pivot_offset = Vector2( 128, 128 )
+texture = ExtResource( 3 )
+
+[node name="u" type="TextureRect" parent="."]
+margin_left = 32.0
+margin_top = -96.0
+margin_right = 288.0
+margin_bottom = 160.0
+rect_rotation = -90.0
+rect_scale = Vector2( 0.25, 0.25 )
+rect_pivot_offset = Vector2( 128, 128 )
+texture = ExtResource( 3 )
+
+[node name="l" type="TextureRect" parent="."]
+margin_left = -96.0
+margin_top = 32.0
+margin_right = 160.0
+margin_bottom = 288.0
+rect_scale = Vector2( 0.25, 0.25 )
+rect_pivot_offset = Vector2( 128, 128 )
+texture = ExtResource( 3 )
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

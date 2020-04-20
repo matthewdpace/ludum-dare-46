@@ -1,7 +1,8 @@
 extends Spatial
 
 
-var startFish = 3
+
+var startFish = 30
 
 var localCO2 = 200
 var localCO2Tank = 2000
@@ -16,8 +17,11 @@ var bio = {
 }
 var fish = []
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	var Fish = load('res://assets/misc/Fish.tscn')
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	
 	bio['airCO2Level'] = 300.0
 	bio['waterCO2Level'] = 350.0
 	bio['waterO2Level'] = 11000.0
@@ -25,6 +29,22 @@ func _ready():
 	bio['edibleFood'] = 200 
 	bio['algaeHealth'] = 0.5
 	bio['poop'] = 20
+	bio['food'] = 42
+	
+	var k = 0
+	var f
+	while k < startFish:
+		f = Fish.instance()
+		f.translation = Vector3(rng.randf_range(-8,8),
+							rng.randf_range(2,12),
+							rng.randf_range(-8,8))
+		#f.set_owner(self)
+		f.set_name("Fish "+ str(k))
+		add_child(f)
+		fish.append(f)
+		k += 1
+		
+	
 	
 
 
@@ -62,9 +82,11 @@ func day():
 	waterCO2Sum += .002 * food
 	
 	
+	print (str(fish))
 	
-	
-	# handle fish
+	for f in fish:
+		f.day(bio)
+		print(f)
 	
 	
 	#update them all

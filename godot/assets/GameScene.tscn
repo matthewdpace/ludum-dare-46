@@ -1,18 +1,17 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/GameScene.gd" type="Script" id=1]
 [ext_resource path="res://assets/materials/MarsSurface.tres" type="Material" id=2]
-[ext_resource path="res://assets/materials/water_shader.tres" type="Material" id=3]
-[ext_resource path="res://assets/Vegetable.gd" type="Script" id=4]
-[ext_resource path="res://assets/Animal.gd" type="Script" id=5]
-[ext_resource path="res://assets/materials/Support_Material.tres" type="Material" id=6]
+[ext_resource path="res://assets/materials/Support_Material.tres" type="Material" id=3]
+[ext_resource path="res://assets/Aquarium.gd" type="Script" id=4]
+[ext_resource path="res://assets/materials/water_shader.tres" type="Material" id=5]
+[ext_resource path="res://assets/Vegetable.gd" type="Script" id=6]
 [ext_resource path="res://assets/materials/BaseFloor.tres" type="Material" id=7]
 [ext_resource path="res://assets/materials/Dirt.tres" type="Material" id=8]
-[ext_resource path="res://assets/CameraParent.gd" type="Script" id=9]
-[ext_resource path="res://assets/Aquarium.gd" type="Script" id=10]
-[ext_resource path="res://assets/misc/Fish.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/Animal.gd" type="Script" id=9]
+[ext_resource path="res://assets/CameraParent.gd" type="Script" id=10]
+[ext_resource path="res://assets/HUD1.gd" type="Script" id=11]
 [ext_resource path="res://assets/scenes/GUI Blocks.tscn" type="PackedScene" id=12]
-[ext_resource path="res://assets/HUD1.gd" type="Script" id=13]
 
 [sub_resource type="PlaneMesh" id=1]
 material = ExtResource( 2 )
@@ -21,41 +20,41 @@ size = Vector2( 500, 500 )
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 0.5, 65, 0.5 )
 
-[sub_resource type="BoxShape" id=11]
+[sub_resource type="BoxShape" id=3]
 extents = Vector3( 10, 6, 10 )
 
-[sub_resource type="CubeMesh" id=3]
-material = ExtResource( 3 )
+[sub_resource type="CubeMesh" id=4]
+material = ExtResource( 5 )
 size = Vector3( 19.5, 12, 19.5 )
 
-[sub_resource type="CubeMesh" id=4]
-size = Vector3( 19.5, 0.5, 19.5 )
-
 [sub_resource type="CubeMesh" id=5]
-size = Vector3( 19.5, 4, 19.5 )
-
-[sub_resource type="BoxShape" id=12]
-extents = Vector3( 10, 4, 10 )
+size = Vector3( 19.5, 0.5, 19.5 )
 
 [sub_resource type="CubeMesh" id=6]
-size = Vector3( 19.5, 0.5, 19.5 )
+size = Vector3( 19.5, 4, 19.5 )
 
-[sub_resource type="CubeMesh" id=7]
-size = Vector3( 19.5, 3, 19.5 )
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 10, 4, 10 )
 
 [sub_resource type="CubeMesh" id=8]
+size = Vector3( 19.5, 0.5, 19.5 )
+
+[sub_resource type="CubeMesh" id=9]
+size = Vector3( 19.5, 3, 19.5 )
+
+[sub_resource type="CubeMesh" id=10]
 size = Vector3( 20, 2, 20 )
 
-[sub_resource type="ProceduralSky" id=9]
+[sub_resource type="ProceduralSky" id=11]
 resource_local_to_scene = true
 sky_horizon_color = Color( 0.94902, 0.596078, 0.85098, 1 )
 sky_curve = 0.428115
 sky_energy = 0.4
 sun_latitude = -11.59
 
-[sub_resource type="Environment" id=10]
+[sub_resource type="Environment" id=12]
 background_mode = 3
-background_sky = SubResource( 9 )
+background_sky = SubResource( 11 )
 background_color = Color( 0.439216, 0.658824, 0.733333, 1 )
 
 [node name="Spatial" type="Spatial"]
@@ -72,59 +71,53 @@ material/0 = null
 [node name="Column01" type="MeshInstance" parent="Base"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 32, -9.75 )
 mesh = SubResource( 2 )
-material/0 = ExtResource( 6 )
+material/0 = ExtResource( 3 )
 
 [node name="Column02" type="MeshInstance" parent="Base"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 32, -9.75 )
 mesh = SubResource( 2 )
-material/0 = ExtResource( 6 )
+material/0 = ExtResource( 3 )
 
 [node name="Column03" type="MeshInstance" parent="Base"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 32, 9.75 )
 mesh = SubResource( 2 )
-material/0 = ExtResource( 6 )
+material/0 = ExtResource( 3 )
 
 [node name="Column04" type="MeshInstance" parent="Base"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 32, 9.75 )
 mesh = SubResource( 2 )
-material/0 = ExtResource( 6 )
+material/0 = ExtResource( 3 )
 
 [node name="Aquarium" type="Spatial" parent="Base"]
-script = ExtResource( 10 )
+script = ExtResource( 4 )
 
 [node name="AquaClickArea" type="Area" parent="Base/Aquarium"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
 
 [node name="AquaClickBox" type="CollisionShape" parent="Base/Aquarium/AquaClickArea"]
-shape = SubResource( 11 )
-
-[node name="Fish2" parent="Base/Aquarium" instance=ExtResource( 11 )]
-transform = Transform( 0.415821, 0, -0.909447, 0, 1, 0, 0.909447, 0, 0.415821, -10.7315, 10.6645, -1.27588 )
+shape = SubResource( 3 )
 
 [node name="Water" type="MeshInstance" parent="Base/Aquarium"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
-mesh = SubResource( 3 )
-material/0 = ExtResource( 3 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
 
 [node name="AquariumLight" type="SpotLight" parent="Base/Aquarium"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 17.8867, 0 )
 light_color = Color( 0.929412, 0.960784, 1, 1 )
 spot_range = 20.0
 
-[node name="Fish1" parent="Base/Aquarium" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.84729, 5.34111, 2.73261 )
-
 [node name="Vegetable" type="Spatial" parent="Base"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 
 [node name="Floor" type="MeshInstance" parent="Base/Vegetable"]
-mesh = SubResource( 4 )
+mesh = SubResource( 5 )
 material/0 = ExtResource( 7 )
 
 [node name="Dirt" type="MeshInstance" parent="Base/Vegetable"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0 )
-mesh = SubResource( 5 )
+mesh = SubResource( 6 )
 material/0 = ExtResource( 8 )
 
 [node name="Vegetable Light" type="SpotLight" parent="Base/Vegetable"]
@@ -137,19 +130,19 @@ spot_range = 20.0
 
 [node name="VegClickBox" type="CollisionShape" parent="Base/Vegetable/VegClickArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
-shape = SubResource( 12 )
+shape = SubResource( 7 )
 
 [node name="Animal" type="Spatial" parent="Base"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0 )
-script = ExtResource( 5 )
+script = ExtResource( 9 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Base/Animal"]
-mesh = SubResource( 6 )
+mesh = SubResource( 8 )
 material/0 = ExtResource( 7 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Base/Animal"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0 )
-mesh = SubResource( 7 )
+mesh = SubResource( 9 )
 material/0 = ExtResource( 8 )
 
 [node name="SpotLight" type="SpotLight" parent="Base/Animal"]
@@ -161,15 +154,15 @@ light_energy = 0.3
 
 [node name="MeshInstance" type="MeshInstance" parent="Base/Roof"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 63, 0 )
-mesh = SubResource( 8 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="CameraParent" type="Spatial" parent="."]
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="Camera" type="Camera" parent="CameraParent"]
 transform = Transform( 1, 0, 0, 0, 0.984646, 0.174559, 0, -0.174559, 0.984646, 0, 22, 43.7699 )
-environment = SubResource( 10 )
+environment = SubResource( 12 )
 
 [node name="ViewportContainer" type="ViewportContainer" parent="CameraParent"]
 anchor_right = 1.0
@@ -185,6 +178,6 @@ transparent_bg = true
 handle_input_locally = false
 hdr = false
 render_target_update_mode = 3
-script = ExtResource( 13 )
+script = ExtResource( 11 )
 
 [node name="GUI Blocks" parent="CameraParent/ViewportContainer/HUD1" instance=ExtResource( 12 )]

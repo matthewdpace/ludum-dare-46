@@ -1,11 +1,11 @@
 extends Spatial
 
 
-var hunger = 2
+var hunger = 20
 var biomass
 var daysAlive = 0 # 668 martian sols in a martian year
-var maturity = 2
-var retirement = 5
+var maturity = 7
+var retirement = 15
 
 
 
@@ -13,7 +13,7 @@ func _ready():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	
-	self.biomass = 20.0 + rng.randf_range(-4,4)
+	self.biomass = 200.0 + rng.randf_range(-4,4)
 	
 	#self.translation = Vector3(rng.randf_range(-8,8),
 	#						rng.randf_range(2,12),
